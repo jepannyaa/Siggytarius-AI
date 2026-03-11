@@ -60,15 +60,15 @@ export function buildPromptWithContext(
   const systemPrompt = getSystemPrompt(persona);
 
   if (!retrievedContext) {
-    return systemPrompt;
+    return systemPrompt + `\n\nNOTE: No documentation context was found for this query. Tell the user you don't have specific information about this topic and suggest they check the official Ritual docs at ritualfoundation.org/docs.`;
   }
 
   return `${systemPrompt}
 
 ---
-RELEVANT CONTEXT FROM RITUAL DOCUMENTATION:
+RELEVANT CONTEXT FROM RITUAL DOCUMENTATION (YOU MUST USE THIS):
 ${retrievedContext}
 
-Use the above context to answer the user's question accurately. Stay in character.
+IMPORTANT: Base your answer STRICTLY on the context above. Do not add information not present in the context. Stay in character.
 ---`;
 }

@@ -33,7 +33,7 @@ export function ChatMessage({ message, persona }: ChatMessageProps) {
           <div className="bg-black/40 backdrop-blur-sm border border-white/10 text-[#fafafa] rounded-2xl rounded-tr-sm px-4 py-3 text-sm leading-relaxed">
             {message.content}
           </div>
-          <span className="text-xs text-[#52525b]">
+          <span className="text-xs text-[#52525b]" suppressHydrationWarning>
             {formatTimestamp(message.timestamp)}
           </span>
         </div>
@@ -58,7 +58,7 @@ export function ChatMessage({ message, persona }: ChatMessageProps) {
           <span className={cn('text-xs font-semibold', personaConfig.color)}>
             Siggytarius {personaConfig.emoji}
           </span>
-          <span className="text-xs text-[#52525b]">
+          <span className="text-xs text-[#52525b]" suppressHydrationWarning>
             {formatTimestamp(message.timestamp)}
           </span>
         </div>

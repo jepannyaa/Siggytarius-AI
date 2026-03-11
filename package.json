@@ -10,7 +10,8 @@
     "lint": "next lint",
     "scrape": "tsx scripts/scrape-docs.ts",
     "embed": "tsx scripts/generate-embeddings.ts",
-    "setup-kb": "npm run scrape && npm run embed"
+    "setup-kb": "npm run scrape && npm run embed",
+    "index-kb": "npm run embed"
   },
   "keywords": [],
   "author": "",

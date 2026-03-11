@@ -24,7 +24,7 @@ export function retrieve(
 
   // Sort descending by score, take top K
   scored.sort((a, b) => b.score - a.score);
-  const results = scored.slice(0, topK).filter((r) => r.score > 0.01);
+  const results = scored.slice(0, topK).filter((r) => r.score > 0.001);
 
   return results;
 }

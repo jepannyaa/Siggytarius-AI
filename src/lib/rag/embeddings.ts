@@ -54,7 +54,7 @@ export function buildEmbeddingModel(documents: string[]): EmbeddingModel {
   const idf: number[] = [];
 
   for (const [term, df] of termDocCount.entries()) {
-    if (df >= 2 && df < N * 0.8) {
+    if (df >= 1 && df < N * 0.99) {
       vocabulary.push(term);
       idf.push(Math.log((N + 1) / (df + 1)) + 1);
     }

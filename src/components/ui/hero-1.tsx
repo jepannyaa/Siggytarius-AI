@@ -25,7 +25,7 @@ const teamMembers = [
 
 const Hero1 = () => {
   return (
-    <div className="min-h-screen text-white flex flex-col relative overflow-x-hidden">
+    <div className="h-screen text-white flex flex-col relative overflow-y-auto overflow-x-hidden overscroll-none">
       {/* Background image */}
       <div
         className="absolute inset-0 z-0"

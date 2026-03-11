@@ -21,6 +21,11 @@ export function ChatContainer({ onPersonaChange, onStreamingChange }: ChatContai
   const { messages, input, setInput, isStreaming, sendMessage, clearChat } =
     useChat(persona);
 
+  const handlePersonaChange = (next: Persona) => {
+    setPersona(next);
+    clearChat();
+  };
+
   // Propagate state up
   useEffect(() => { onPersonaChange?.(persona); }, [persona, onPersonaChange]);
   useEffect(() => { onStreamingChange?.(isStreaming); }, [isStreaming, onStreamingChange]);
@@ -36,7 +41,7 @@ export function ChatContainer({ onPersonaChange, onStreamingChange }: ChatContai
       {/* Persona selector bar */}
       <PersonaSelector
         selected={persona}
-        onChange={setPersona}
+        onChange={handlePersonaChange}
         disabled={isStreaming}
       />
 

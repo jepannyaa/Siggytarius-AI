@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -45,18 +46,17 @@ export function ChatMessage({ message, persona }: ChatMessageProps) {
       {/* Cat Avatar */}
       <div
         className={cn(
-          'flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-base border mt-1',
-          personaConfig.bgColor,
+          'flex-shrink-0 w-8 h-8 rounded-full overflow-hidden border mt-1',
           personaConfig.borderColor
         )}
       >
-        🐱
+        <Image src="/icon.jpg" alt="Siggytarius" width={32} height={32} className="object-cover object-center scale-[2] w-full h-full" />
       </div>
 
       <div className="flex-1 min-w-0 flex flex-col gap-1">
         <div className="flex items-center gap-2">
           <span className={cn('text-xs font-semibold', personaConfig.color)}>
-            Siggy {personaConfig.emoji}
+            Siggytarius {personaConfig.emoji}
           </span>
           <span className="text-xs text-[#52525b]">
             {formatTimestamp(message.timestamp)}
@@ -65,7 +65,7 @@ export function ChatMessage({ message, persona }: ChatMessageProps) {
 
         {/* Message bubble */}
         <div className="relative bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-[#e4e4e7] leading-relaxed">
-          <div className="prose prose-invert prose-sm max-w-none prose-p:my-1 prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-code:text-[#a78bfa] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded">
+          <div className="prose prose-invert prose-sm max-w-none prose-p:my-2.5 prose-p:leading-relaxed prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-code:text-[#a78bfa] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeHighlight]}

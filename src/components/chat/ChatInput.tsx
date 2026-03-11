@@ -17,7 +17,7 @@ export function ChatInput({
   onChange,
   onSubmit,
   disabled,
-  placeholder = 'Ask Siggy anything...',
+  placeholder = 'Ask Siggytarius anything...',
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -28,6 +28,13 @@ export function ChatInput({
       textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 160)}px`;
     }
   }, [value]);
+
+  // Auto-focus after streaming ends
+  useEffect(() => {
+    if (!disabled) {
+      textareaRef.current?.focus();
+    }
+  }, [disabled]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {

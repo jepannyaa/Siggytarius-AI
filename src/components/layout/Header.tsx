@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { PERSONA_CONFIGS } from '@/lib/prompts';
 import type { Persona } from '@/types';
@@ -19,12 +20,11 @@ export function Header({ persona = 'witty', isStreaming = false }: HeaderProps) 
         {/* Logo */}
         <div
           className={cn(
-            'w-9 h-9 rounded-full flex items-center justify-center text-xl border transition-colors',
-            config.bgColor,
+            'w-9 h-9 rounded-full overflow-hidden border transition-colors',
             config.borderColor
           )}
         >
-          🐱
+          <Image src="/icon.jpg" alt="Siggytarius" width={36} height={36} className="object-cover object-center scale-[2] w-full h-full" />
         </div>
         <div>
           <h1 className="text-[#fafafa] font-semibold font-heading text-base leading-none">

@@ -118,7 +118,7 @@ export function useChat(persona: Persona) {
           m.id === assistantId
             ? {
                 ...m,
-                content: `⚠️ Siggy had a moment... (${errMsg}). Please try again.`,
+                content: `⚠️ Siggytarius had a moment... (${errMsg}). Please try again.`,
               }
             : m
         )

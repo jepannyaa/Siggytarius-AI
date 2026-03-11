@@ -33,7 +33,7 @@ export function WelcomeMessage({ persona }: WelcomeMessageProps) {
         </div>
         <div
           className={cn(
-            'bg-[#141414] border rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-[#e4e4e7] leading-relaxed',
+            'bg-black/40 backdrop-blur-sm border rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-[#e4e4e7] leading-relaxed',
             config.borderColor
           )}
         >

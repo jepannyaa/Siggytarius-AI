@@ -32,7 +32,7 @@ export function ChatContainer({ onPersonaChange, onStreamingChange }: ChatContai
   }, [messages, isStreaming]);
 
   return (
-    <div className="flex flex-col h-full min-h-0 bg-[#0a0a0a]">
+    <div className="flex flex-col h-full min-h-0 bg-transparent">
       {/* Persona selector bar */}
       <PersonaSelector
         selected={persona}
@@ -41,7 +41,7 @@ export function ChatContainer({ onPersonaChange, onStreamingChange }: ChatContai
       />
 
       {/* Chat messages area */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-thumb-[#262626] scrollbar-track-transparent">
+      <div className="flex-1 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
         <div className="flex flex-col justify-end min-h-full space-y-5">
         {/* Welcome message */}
         <WelcomeMessage persona={persona} key={`welcome-${persona}`} />

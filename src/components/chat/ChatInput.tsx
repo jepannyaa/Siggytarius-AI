@@ -39,10 +39,10 @@ export function ChatInput({
   };
 
   return (
-    <div className="border-t border-[#262626] bg-[#0a0a0a] px-4 pb-4">
+    <div className="border-t border-white/10 bg-black/30 backdrop-blur-sm px-4 py-3">
       <div className={cn(
-          'flex items-end gap-3 bg-[#141414] border rounded-2xl px-4 py-3 transition-colors',
-          disabled ? 'border-[#262626]' : 'border-[#3f3f46] focus-within:border-[#71717a]'
+          'flex items-center gap-2 bg-white/5 border rounded-2xl px-4 py-2.5 transition-colors',
+          disabled ? 'border-white/10' : 'border-white/15 focus-within:border-white/30'
         )}
       >
         <textarea
@@ -53,7 +53,7 @@ export function ChatInput({
           disabled={disabled}
           placeholder={placeholder}
           rows={1}
-          className="flex-1 bg-transparent text-[#fafafa] placeholder:text-[#52525b] text-sm resize-none outline-none leading-relaxed max-h-40 disabled:opacity-50"
+          className="flex-1 bg-transparent text-[#fafafa] placeholder:text-[#52525b] text-sm resize-none outline-none leading-normal max-h-40 disabled:opacity-50 py-0.5"
         />
         <button
           onClick={() => !disabled && value.trim() && onSubmit()}
@@ -62,13 +62,13 @@ export function ChatInput({
             'flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all',
             !disabled && value.trim()
               ? 'bg-[#fafafa] text-[#0a0a0a] hover:bg-[#e4e4e7]'
-              : 'bg-[#262626] text-[#52525b] cursor-not-allowed'
+              : 'bg-white/10 text-white/30 cursor-not-allowed'
           )}
         >
           <Send size={14} />
         </button>
       </div>
-      <p className="text-[10px] text-[#3f3f46] text-center mt-2">
+      <p className="text-[10px] text-white/20 text-center mt-2">
         Press Enter to send · Shift+Enter for new line
       </p>
     </div>

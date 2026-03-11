@@ -12,7 +12,7 @@ interface PersonaSelectorProps {
 
 export function PersonaSelector({ selected, onChange, disabled }: PersonaSelectorProps) {
   return (
-    <div className="flex gap-2 px-4 py-3 border-b border-[#262626] bg-[#0d0d0d]">
+    <div className="flex gap-2 px-4 py-3 border-b border-white/10 bg-black/30 backdrop-blur-sm">
       {(Object.values(PERSONA_CONFIGS) as ReturnType<typeof Object.values>).map((config) => {
         const p = config as (typeof PERSONA_CONFIGS)[Persona];
         const isActive = selected === p.id;

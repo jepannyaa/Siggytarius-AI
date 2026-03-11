@@ -29,7 +29,7 @@ export function ChatMessage({ message, persona }: ChatMessageProps) {
     return (
       <div className="flex justify-end animate-slide-up">
         <div className="max-w-[75%] flex flex-col items-end gap-1">
-          <div className="bg-[#1e1e1e] border border-[#2e2e2e] text-[#fafafa] rounded-2xl rounded-tr-sm px-4 py-3 text-sm leading-relaxed">
+          <div className="bg-black/40 backdrop-blur-sm border border-white/10 text-[#fafafa] rounded-2xl rounded-tr-sm px-4 py-3 text-sm leading-relaxed">
             {message.content}
           </div>
           <span className="text-xs text-[#52525b]">
@@ -64,8 +64,8 @@ export function ChatMessage({ message, persona }: ChatMessageProps) {
         </div>
 
         {/* Message bubble */}
-        <div className="relative bg-[#141414] border border-[#262626] rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-[#e4e4e7] leading-relaxed">
-          <div className="prose prose-invert prose-sm max-w-none prose-p:my-1 prose-pre:bg-[#0a0a0a] prose-pre:border prose-pre:border-[#262626] prose-code:text-[#a78bfa] prose-code:bg-[#1a1a2e] prose-code:px-1 prose-code:rounded">
+        <div className="relative bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-[#e4e4e7] leading-relaxed">
+          <div className="prose prose-invert prose-sm max-w-none prose-p:my-1 prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-code:text-[#a78bfa] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeHighlight]}

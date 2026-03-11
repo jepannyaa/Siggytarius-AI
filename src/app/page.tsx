@@ -1,9 +1,5 @@
-/**
- * Landing page — reserved for future features.
- * For now, redirects to /chat.
- */
-import { redirect } from 'next/navigation';
+import { Hero1 } from '@/components/ui/hero-1';
 
 export default function HomePage() {
-  redirect('/chat');
+  return <Hero1 />;
 }

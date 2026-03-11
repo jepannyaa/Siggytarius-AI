@@ -1,0 +1,31 @@
+# Environment
+.env.local
+.env*.local
+
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# RAG data (generated files)
+src/data/documents/*.txt
+src/data/embeddings/vector-store.json
+src/data/embeddings/embedding-model.json
+
+# Uploads (user-uploaded images, keep folder structure only)
+public/uploads/*
+!public/uploads/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/

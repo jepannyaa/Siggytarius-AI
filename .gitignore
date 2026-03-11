@@ -9,11 +9,6 @@ node_modules/
 .next/
 out/
 
-# RAG data (generated files)
-src/data/documents/*.txt
-src/data/embeddings/vector-store.json
-src/data/embeddings/embedding-model.json
-
 # Uploads (user-uploaded images, keep folder structure only)
 public/uploads/*
 !public/uploads/.gitkeep

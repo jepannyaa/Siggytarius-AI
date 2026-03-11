@@ -3,6 +3,7 @@
 import { PERSONA_CONFIGS } from '@/lib/prompts';
 import type { Persona } from '@/types';
 import { cn } from '@/lib/utils';
+import { useAudio } from '@/hooks/useAudio';
 
 interface PersonaSelectorProps {
   selected: Persona;
@@ -11,6 +12,8 @@ interface PersonaSelectorProps {
 }
 
 export function PersonaSelector({ selected, onChange, disabled }: PersonaSelectorProps) {
+  const { playClick } = useAudio();
+
   return (
     <div className="flex gap-2 px-4 py-3 border-b border-white/10 bg-black/30 backdrop-blur-sm">
       {(Object.values(PERSONA_CONFIGS) as ReturnType<typeof Object.values>).map((config) => {
@@ -19,7 +22,12 @@ export function PersonaSelector({ selected, onChange, disabled }: PersonaSelecto
         return (
           <button
             key={p.id}
-            onClick={() => !disabled && onChange(p.id)}
+            onClick={() => {
+              if (!disabled) {
+                playClick();
+                onChange(p.id);
+              }
+            }}
             disabled={disabled}
             title={p.description}
             className={cn(

@@ -4,6 +4,8 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
+import { useAudio } from "@/hooks/useAudio";
+import { AudioController } from "@/components/ui/AudioController";
 
 const teamMembers = [
   {
@@ -24,6 +26,8 @@ const teamMembers = [
 ];
 
 const Hero1 = () => {
+  const { playClick } = useAudio();
+
   return (
     <div className="min-h-screen text-white flex flex-col relative overflow-x-hidden"
       style={{
@@ -67,6 +71,7 @@ const Hero1 = () => {
           <div className="flex justify-center pt-2">
             <Link
               href="/chat"
+              onClick={playClick}
               className="group flex items-center gap-3 bg-white text-black hover:bg-gray-100 rounded-full px-8 py-4 text-base font-bold transition-all duration-200 shadow-lg shadow-white/10 hover:shadow-white/20 hover:scale-105"
             >
               <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -86,6 +91,7 @@ const Hero1 = () => {
               <Link
                 key={pill}
                 href={`/chat`}
+                onClick={playClick}
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 text-sm transition-colors"
               >
                 {pill}
@@ -131,6 +137,9 @@ const Hero1 = () => {
           © 2026 Siggytarius · Built on Ritual Network
         </div>
       </footer>
+
+      {/* Audio controller — fixed bottom right */}
+      <AudioController />
     </div>
   );
 };

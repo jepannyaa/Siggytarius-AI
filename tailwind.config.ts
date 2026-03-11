@@ -29,6 +29,9 @@ module.exports = {
         'typing-dot': 'typing-dot 1.4s infinite ease-in-out',
         'fade-in': 'fade-in 0.3s ease-in-out',
         'slide-up': 'slide-up 0.3s ease-out',
+        'eq1': 'eq1 0.9s ease-in-out infinite alternate',
+        'eq2': 'eq2 0.7s ease-in-out infinite alternate',
+        'eq3': 'eq3 1.1s ease-in-out infinite alternate',
       },
       keyframes: {
         'typing-dot': {
@@ -42,6 +45,18 @@ module.exports = {
         'slide-up': {
           '0%': { transform: 'translateY(10px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        'eq1': {
+          '0%': { transform: 'scaleY(0.4)' },
+          '100%': { transform: 'scaleY(1)' },
+        },
+        'eq2': {
+          '0%': { transform: 'scaleY(1)' },
+          '100%': { transform: 'scaleY(0.3)' },
+        },
+        'eq3': {
+          '0%': { transform: 'scaleY(0.6)' },
+          '100%': { transform: 'scaleY(1)' },
         },
       },
     },

@@ -4,11 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { ChatContainer } from '@/components/chat/ChatContainer';
+import { AudioController } from '@/components/ui/AudioController';
+import { useAudio } from '@/hooks/useAudio';
 import type { Persona } from '@/types';
 
 export default function ChatPage() {
   const [persona, setPersona] = useState<Persona>('witty');
   const [isStreaming, setIsStreaming] = useState(false);
+  const { playClick } = useAudio();
 
   return (
     <div
@@ -26,6 +29,7 @@ export default function ChatPage() {
       <div className="absolute top-4 left-4 z-20">
         <Link
           href="/"
+          onClick={playClick}
           className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors group bg-black/40 backdrop-blur-sm border border-white/10 rounded-full px-3 py-2"
         >
           <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
@@ -41,6 +45,9 @@ export default function ChatPage() {
           />
         </div>
       </div>
+
+      {/* Audio controller */}
+      <AudioController />
     </div>
   );
 }

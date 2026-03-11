@@ -3,6 +3,7 @@
 import { useRef, useEffect } from 'react';
 import { Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useAudio } from '@/hooks/useAudio';
 
 interface ChatInputProps {
   value: string;
@@ -20,6 +21,7 @@ export function ChatInput({
   placeholder = 'Ask Siggytarius anything...',
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const { playClick } = useAudio();
 
   // Auto-resize textarea
   useEffect(() => {
@@ -40,6 +42,7 @@ export function ChatInput({
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       if (!disabled && value.trim()) {
+        playClick();
         onSubmit();
       }
     }
@@ -63,7 +66,12 @@ export function ChatInput({
           className="flex-1 bg-transparent text-[#fafafa] placeholder:text-[#52525b] text-sm resize-none outline-none leading-normal max-h-40 disabled:opacity-50 py-0.5"
         />
         <button
-          onClick={() => !disabled && value.trim() && onSubmit()}
+          onClick={() => {
+            if (!disabled && value.trim()) {
+              playClick();
+              onSubmit();
+            }
+          }}
           disabled={disabled || !value.trim()}
           className={cn(
             'flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all',

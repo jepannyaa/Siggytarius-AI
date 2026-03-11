@@ -11,7 +11,8 @@ Built with **Next.js 14**, **Groq API**, and a custom **RAG pipeline** over Ritu
 - 🔮 **3 Personas** — Mystical, Witty, Unhinged — each with distinct system prompts and color themes
 - 📚 **RAG Pipeline** — Retrieves relevant Ritual Network docs before answering
 - ⚡ **Streaming** — Token-by-token response via SSE (Server-Sent Events)
-- � **Landing page** — Hero section at `/` with team credits and background artwork
+- 🎵 **Background music** — Looping audio with click SFX, toggleable via AudioController
+- 🏠 **Landing page** — Hero section at `/` with team credits and background artwork
 - 💬 **Chat at `/chat`** — Persona switcher, auto-clear chat on persona change
 - 🪟 **Glassmorphism UI** — Frosted glass containers over background image
 - 🛡️ **Rate limiting** — Per-IP protection built in
@@ -37,7 +38,8 @@ src/
 │       └── hero-1.tsx            # Landing page hero component
 ├── hooks/
 │   ├── useChat.ts                # SSE streaming + message state
-│   └── usePersona.ts             # Persona state (persisted to localStorage)
+│   ├── usePersona.ts             # Persona state (persisted to localStorage)
+│   └── useAudio.ts               # Singleton audio manager (bg music + click SFX)
 ├── lib/
 │   ├── groq.ts                   # Groq client
 │   ├── constants.ts              # Ritual doc URLs, RAG config
@@ -45,11 +47,14 @@ src/
 │   ├── prompts/                  # System prompts per persona
 │   └── rag/                      # RAG pipeline (chunks, embeddings, retriever)
 ├── data/
-│   ├── documents/                # Scraped docs (.txt) — auto-generated
-│   └── embeddings/               # Vector store (.json) — auto-generated
+│   ├── documents/                # Ritual docs (.txt) — committed to repo
+│   └── embeddings/               # Vector store (.json) — generated via npm run embed
 ├── types/index.ts                # All TypeScript types
 └── styles/globals.css            # Global styles + Tailwind
 public/
+├── audio/
+│   ├── bg-music.mp3              # Background music (looping)
+│   └── click.mp3                 # Click sound effect
 ├── background.jpg                # Landing page & chat background
 ├── icon.jpg                      # Siggytarius avatar
 ├── jepannyaa.jpg                 # Team member photo
@@ -88,13 +93,15 @@ Get your free key at: https://console.groq.com
 
 ### 3. Build the knowledge base
 
-This scrapes 15 Ritual Network documentation pages and builds the RAG vector store:
+The `.txt` documents are already included in the repo. Just build the vector store:
 
 ```bash
-npm run setup-kb
+npm run embed
 ```
 
-Or run steps individually:
+> ⚠️ Do **not** run `npm run setup-kb` — it will re-scrape and overwrite the curated documents.
+
+If you want to re-scrape from scratch:
 
 ```bash
 npm run scrape   # Scrape docs → src/data/documents/
